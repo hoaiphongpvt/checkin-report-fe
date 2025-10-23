@@ -3,7 +3,7 @@
 import { Spinner } from '@/components/ui/spinner'
 
 interface TimekeepingRecord {
-  id: number
+  ID: number
   NguoiChamCong: string
   TeacherName?: string // Added TeacherName field
   StaffName?: string // Added StaffName field
@@ -18,14 +18,14 @@ interface TimekeepingTableProps {
   data: TimekeepingRecord[]
   isLoading: boolean
   error?: string | null
-  userType?: "teacher" | "staff" // Added userType prop
+  userType?: 'teacher' | 'staff' // Added userType prop
 }
 
 export function TimekeepingTable({
   data,
   isLoading,
   error,
-  userType = "teacher", // Destructure userType with default
+  userType = 'teacher', // Destructure userType with default
 }: TimekeepingTableProps) {
   if (isLoading) {
     return (
@@ -82,20 +82,23 @@ export function TimekeepingTable({
         <tbody>
           {data.map((record, index) => (
             <tr
-              key={record.id || index}
+              key={record.ID || index}
               className={`border-b border-slate-700 transition-colors ${
                 index % 2 === 0 ? 'bg-slate-800/50' : 'bg-slate-800'
               } hover:bg-slate-700/50`}
             >
-              <td className='px-6 py-4 text-sm text-slate-300'>{record.id}</td>
+              <td className='px-6 py-4 text-sm text-slate-300'>{record.ID}</td>
               <td className='px-6 py-4 text-sm text-slate-300'>
                 {record.NguoiChamCong}
               </td>
               <td className='px-6 py-4 text-sm text-slate-300'>
-                {userType === "teacher" ? record.TeacherName || '-' : record.StaffName || '-'}
+                {userType === 'teacher'
+                  ? record.TeacherName || '-'
+                  : record.StaffName || '-'}
               </td>
               <td className='px-6 py-4 text-sm text-slate-300'>
-                {new Date(record.ThoiGian).toLocaleString('en-US', { // Using en-US for a neutral locale
+                {new Date(record.ThoiGian).toLocaleString('en-US', {
+                  // Using en-US for a neutral locale
                   year: 'numeric',
                   month: '2-digit',
                   day: '2-digit',
