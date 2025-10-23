@@ -95,7 +95,16 @@ export function TimekeepingTable({
                 {userType === "teacher" ? record.TeacherName || '-' : record.StaffName || '-'}
               </td>
               <td className='px-6 py-4 text-sm text-slate-300'>
-                {new Date(record.ThoiGian).toLocaleString('vi-VN')}
+                {new Date(record.ThoiGian).toLocaleString('en-US', { // Using en-US for a neutral locale
+                  year: 'numeric',
+                  month: '2-digit',
+                  day: '2-digit',
+                  hour: '2-digit',
+                  minute: '2-digit',
+                  second: '2-digit',
+                  hour12: false,
+                  timeZone: 'UTC', // Display time in UTC
+                })}
               </td>
 
               <td className='px-6 py-4 text-sm text-slate-300'>
