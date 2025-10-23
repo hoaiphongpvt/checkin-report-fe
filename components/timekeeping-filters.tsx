@@ -137,8 +137,8 @@ export function TimekeepingFilters({ filters, setFilters, userType = "teacher" }
       <div className="flex gap-2">
         <Button
           onClick={handleReset}
-          variant="outline"
-          className="border-slate-600 text-slate-300 hover:bg-slate-700 bg-transparent"
+          variant="default" // Changed variant to default
+          className="bg-blue-600 text-white hover:bg-blue-700 cursor-pointer" // Adjusted styling, added cursor-pointer
         >
           Đặt Lại
         </Button>
